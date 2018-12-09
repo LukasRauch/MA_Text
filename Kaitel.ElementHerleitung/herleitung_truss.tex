@@ -1,0 +1,113 @@
+\documentclass[german,a4paper,12pt,oneside]{scrbook}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{bm}
+\usepackage[ngerman]{babel}
+\usepackage{marvosym}
+\usepackage{graphics}
+\usepackage{natbib}
+
+\newtheorem{satz}{Satz}[chapter]
+\theoremstyle{definition} 
+\newtheorem{definition}[satz]{Definition} 
+\theoremstyle{definition} 
+\newtheorem{lemma}[satz]{Lemma} 
+\theoremstyle{definition} 
+\newtheorem{bemerkung}[satz]{Bemerkung}
+\theoremstyle{definition} 
+\newtheorem{korollar}[satz]{Korollar} 
+\theoremstyle{definition}
+\newtheorem{beispiel}[satz]{Beispiel} 
+\theoremstyle{definition} 
+\newtheorem{algorithmus}{Algorithmus} 
+\newenvironment{beweis}{\begin{proof}[Beweis]}{\end{proof}}
+
+
+\begin{document}
+
+\pagenumbering{arabic}  % Nummerierung der Seiten in 'arabisch' % neues Kapitel mit Namen "Introduction"
+
+\chapter{Grundlagen der Kontinuumsmechanik}
+\section{Kontinuumsmechanik}
+hier kommt was rein
+
+\section{Differentielle Geometrie}
+hier kommt noch mehr rein
+
+\chapter{Truss Theory}  \setcounter{page}{1}   % setzt Seitenzaehlung auf 1
+% Zitate aus Büchern werden so gemacht, siehe in \cite{schoenbucher03} oder \cite{marshall67}.
+
+
+
+
+\section{Herleitung eines Fachwerkstab Elementes aus dem Kontinuum}
+
+
+Das nachfolgende Kapitel behandelt die theoretische Herleitung eines Fachwerkstab Elementes
+mit den Methoden der Kontinuumsmechanik. Das Kapitel ist dahingehend zu interpretieren, dass es auf
+verständliche Art und Weise das Vorgen bei der Herleitung eines allgemeineren Elementes einschließt,
+aber komplexe Mechaniken eines Balkenelementes außer Acht lässt.
+
+Einhergehend mit der Definition des Fachwerkes unterwirft sich das allgemeine Fachwerkelement 
+einigen vereinfachten Annahmen. So wird im Nachfolgenden davon ausgegangen, dass das Element an den Knotenpunkten ideal gelenkig gelagert ist. Äußere Lasten sind nicht direkt auf den Stab aufzubringen,sondern ausschließlich über die Knoten einzuleiten. Mögliche räumlich ausgedehnte Lasten sind dahingehend im Rahmen einer Vorberechnung auf die Fachwerkknoten Aufzuteilen.  Als klassisches Stabtragwerk sind die Längsabmessungen sehr viel größer als die entsprechenden Dicken des Querschnittes in Höhe und Breite. 
+Bezüglich des Kräfteflusses innerhalb des betrachteten Elementes kann davon ausgegangen werden, dass alle Kräfte in Längsrichtung auf den Schwerpunkt des ideellen Querschnittes bezogen sind. Außerdem ist davon auszugehen, dass ein Fachwerkstab zwischen zwei Knoten ideal grade Verläuft. Dass bedeutet dass innerhalb des Elements keine Momente bzw. Schubkräfte auftreten. Statt dessen reduziert sich das Element auf die Übertragung von reinen Normalkräften.
+
+Grundsätzlich sei anzumerken, dass es  mehrere herangehenseisen gibt, um die Mechanik eines solchen Elementes zu beschreiben. An dieser Stelle konzentrieren wir uns auf die Herleitung eines algemeinen Elementes unter Zuhilfenahme der Kontinuumsmechanik um seine Geometrie im Raum zu beschreiben. Die eigentliche Elementformulierung erfolgt im Anschluss über das Prinzip der virtuellen Arbeit Durch die Koppelung von Spannungen \textbf{S} und Dehnungen \textbf{E}. 
+
+\LARGE % TODO
+\emph{Hier Bild von Ausgangszustand einfügen: vgl. Figure 5.1 IGA Skript}
+
+\normalsize
+Darstellung [Referenz] zeigt schematischs den unverformten so wie den verformten Zustand einen Stabes mit seinem jeweiligen Positionsvektor im geometrischen Raum. Die Vektornotation erfolgt in Krummliniger Koordinatendarstellung (nachfolgend als \glqq\emph{Curvilinear}\grqq ~aus dem Englsichen bezeichnet) als eine Funktion aus $\Theta^1$ in einem euklidischen Vektorraum.
+
+Der Stab wird als Reduktion auf seine Mittelachse beschrieben. Diese Linie besitzt im Raum keine Ausdehnung. Jeder Beliebige Punkt auf der Stabsystemachse kann durch seinen Positionsvektor \textbf{R} in Abhängigkeit des Kurvenparameters $\Theta^1$ beschrieben werden. Ein beliebiger Punkt des Querschnittes im Raum kann wiederum durch ein normalisiertes Koordinatensystem mit orthogonalen Basisvektoren \textbf{A}$_{\alpha}$ in Abhängigkeit der Parameter $\Theta^2$ und $\Theta^3$ bestimmt werden. Nachfolgend gelten vereinfachten Annahmen der Bernoullischen Balkentheorie. Demnach kann davon ausgegangen werden, dass die Basisvektoren auch nach Deformation des Stabes senkrecht auf der Balkenachse stehen. Dies induziert ein ebenbleiben des Querschnittes bei Verformung des Elementes. Wir sprechen von einem konstanten, starren Querschnitt.
+% Vielleicht noch ergänzen, dass Theta(2,3) und die korrespondierenden Alpha(2,3) unabhängig von dem Kurvenparameter Theta(1) sind 
+
+\vspace{1.0cm}
+Parametrisierte Darstellung:
+\begin{subequations}
+    \begin{equation} \label{Positionsvektor_a}
+        \bm{X}(\Theta^1) = \bm{R}(\Theta^1) + \Theta^3\bm{A}_2 + \Theta^3\bm{A}_3 
+    \end{equation}
+    \begin{equation} \label{Positionsvektor_b}
+        \bm{x}(\theta^1) = \bm{r}(\theta^1) + \theta^3\bm{a}_2 + \theta^3\bm{a}_3  
+    \end{equation}
+\end{subequations}
+
+Wie in Kapitel [Referenz] beschrieben, sind die Basisvektoren eines Kontinuums wie folgt definiert:
+
+\begin{subequations}
+    \begin{equation}
+        \bm{G}_i = \bm{X}_{,i}
+    \end{equation}
+    \begin{equation}
+        \bm{g}_i = \bm{x}_{,i}
+    \end{equation}
+\end{subequations}
+
+Infolge der Vorschrift aus Gleichung \eqref{Positionsvektor_a} und \eqref{Positionsvektor_b} ergeben sich daraus die Basisvektoren des Querschnittes im unverformten sowie im verformten Zustand abhängig vom Kurvenparameter $\Theta^1$ wie folgt: 
+
+\begin{subequations}
+    \begin{equation}
+        \bm{G}_1 = \bm{X}_{,1} = \bm{A}_1(\Theta^1), \qquad     
+        \bm{g}_1 = \bm{x}_{,1} = \bm{a}_1(\theta^1)
+    \end{equation}
+    \begin{equation}
+        \bm{G}_2 = \bm{X}_{,2} = \bm{A}_2, \qquad     
+        \bm{g}_2 = \bm{x}_{,2} = \bm{a}_2
+    \end{equation}
+    \begin{equation}
+        \bm{G}_1 = \bm{X}_{,1} = \bm{A}_1, \qquad     
+        \bm{g}_1 = \bm{x}_{,1} = \bm{a}_1
+    \end{equation}
+\end{subequations}
+
+\vspace{1.0cm}
+Damit lässt sich die gegebene Konfiguration vor und nach der Deformation beschrieben. 
+Die drei Basisvektoren an einem Punkt definieren wiederum die Metrik in
+
+Setzt man das Ergebnis in die Gleichung [Referenz Green-Lagrange Gleichung] ein, erhält man somit 
+
+
+
+\end{document}
