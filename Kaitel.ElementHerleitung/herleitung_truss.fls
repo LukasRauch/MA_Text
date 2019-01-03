@@ -135,6 +135,8 @@ INPUT d:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmbsy10.tfm
 INPUT d:/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy8.tfm
 INPUT d:/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm
 INPUT d:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmsl12.tfm
+INPUT d:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm
+INPUT d:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT herleitung_truss.aux
 INPUT d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb
@@ -144,4 +146,5 @@ INPUT d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb
 INPUT d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
 INPUT d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb
 INPUT d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb
+INPUT d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 INPUT d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb

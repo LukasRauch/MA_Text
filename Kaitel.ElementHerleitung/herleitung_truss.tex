@@ -42,15 +42,9 @@ hier kommt noch mehr rein
 
 \section{Herleitung eines Fachwerkstab Elementes aus dem Kontinuum}
 
+Das nachfolgende Kapitel behandelt die theoretische Herleitung eines Fachwerkstab Elementes mit den Methoden der Kontinuumsmechanik. Das Kapitel ist dahingehend zu interpretieren, dass es aufverständliche Art und Weise das Vorgen bei der Herleitung eines allgemeinen Elementes einschließt, aber die komplexe Mechaniken eines Balkenelementes außer Acht lässt.
 
-Das nachfolgende Kapitel behandelt die theoretische Herleitung eines Fachwerkstab Elementes
-mit den Methoden der Kontinuumsmechanik. Das Kapitel ist dahingehend zu interpretieren, dass es auf
-verständliche Art und Weise das Vorgen bei der Herleitung eines allgemeineren Elementes einschließt,
-aber komplexe Mechaniken eines Balkenelementes außer Acht lässt.
-
-Einhergehend mit der Definition des Fachwerkes unterwirft sich das allgemeine Fachwerkelement 
-einigen vereinfachten Annahmen. So wird im Nachfolgenden davon ausgegangen, dass das Element an den Knotenpunkten ideal gelenkig gelagert ist. Äußere Lasten sind nicht direkt auf den Stab aufzubringen,sondern ausschließlich über die Knoten einzuleiten. Mögliche räumlich ausgedehnte Lasten sind dahingehend im Rahmen einer Vorberechnung auf die Fachwerkknoten Aufzuteilen.  Als klassisches Stabtragwerk sind die Längsabmessungen sehr viel größer als die entsprechenden Dicken des Querschnittes in Höhe und Breite. 
-Bezüglich des Kräfteflusses innerhalb des betrachteten Elementes kann davon ausgegangen werden, dass alle Kräfte in Längsrichtung auf den Schwerpunkt des ideellen Querschnittes bezogen sind. Außerdem ist davon auszugehen, dass ein Fachwerkstab zwischen zwei Knoten ideal grade Verläuft. Dass bedeutet dass innerhalb des Elements keine Momente bzw. Schubkräfte auftreten. Statt dessen reduziert sich das Element auf die Übertragung von reinen Normalkräften.
+Einhergehend mit der Definition des Fachwerkes unterwirft sich das allgemeine Fachwerkelement einigen vereinfachten Annahmen. So wird im Nachfolgenden davon ausgegangen, dass das Element an den Knotenpunkten ideal gelenkig gelagert ist. Äußere Lasten sind nicht direkt auf den Stab aufzubringen, sondern ausschließlich über die Knoten einzuleiten. Mögliche räumlich ausgedehnte Lasten sind dahingehend im Rahmen einer Vorberechnung auf die Fachwerkknoten Aufzuteilen.  Als klassisches Stabtragwerk sind die Längsabmessungen sehr viel größer als die entsprechenden Dicken des Querschnittes in Höhe und Breite. Bezüglich des Kräfteflusses innerhalb des betrachteten Elementes kann davon ausgegangen werden, dass alle Kräfte in Längsrichtung auf den Schwerpunkt des ideellen Querschnittes bezogen sind. Außerdem ist davon auszugehen, dass ein Fachwerkstab zwischen zwei Knoten ideal grade Verläuft. Dass bedeutet dass innerhalb des Elements keine Momente bzw. Schubkräfte auftreten. Statt dessen reduziert sich das Element auf die Übertragung von reinen Normalkräften.
 
 Grundsätzlich sei anzumerken, dass es  mehrere herangehenseisen gibt, um die Mechanik eines solchen Elementes zu beschreiben. An dieser Stelle konzentrieren wir uns auf die Herleitung eines algemeinen Elementes unter Zuhilfenahme der Kontinuumsmechanik um seine Geometrie im Raum zu beschreiben. Die eigentliche Elementformulierung erfolgt im Anschluss über das Prinzip der virtuellen Arbeit Durch die Koppelung von Spannungen \textbf{S} und Dehnungen \textbf{E}. 
 
@@ -103,11 +97,70 @@ Infolge der Vorschrift aus Gleichung \eqref{Positionsvektor_a} und \eqref{Positi
 \end{subequations}
 
 \vspace{1.0cm}
-Damit lässt sich die gegebene Konfiguration vor und nach der Deformation beschrieben. 
-Die drei Basisvektoren an einem Punkt definieren wiederum die Metrik in
+Damit lässt sich die gegebene Konfiguration vor und nach der Deformation beschrieben. Die drei Basisvektoren an einem Punkt definieren wiederum die Metrik in
 
 Setzt man das Ergebnis in die Gleichung [Referenz Green-Lagrange Gleichung] ein, erhält man somit 
 
+
+
+
+
+\chapter{NURBS Begrifflichkeiten}  \setcounter{page}{1}   % setzt Seitenzaehlung auf 1
+% Zitate aus Büchern werden so gemacht, siehe in \cite{schoenbucher03} oder \cite{marshall67}.
+
+\section{Definition der wichtigeten Begrifflichkeiten bei der Arbeit mit NURBS}
+
+\subsection{Elemente}
+
+% Polynomialer Grad (engl. polynomial degree
+\subsection{Polynomialer Grad (engl. polynomial degree)}
+Der polynomiale Grad einer Kurve wird als ganzzahlige, positive Nummer angegeben, wobei der kleinst mögliche Grad bei 1 beginnt. Nach oben ist der Grad einer Kurve $d$ nur durch seine Anzahl an Kontrollpunkten n begrenzt $d = n - 1$. Allderdings ist zu berücksichtigen, dass sich mit steigendem Grad die approximation des Kontrollpunktpolygons verschlechtert und der Algorithmus zunehmend instabil wird [REF Iga Skript S. 13]. Der definierte polynomiale Grad einer Kurve gibt vor, auf wie viele Intervalle $d$ eine jede Basisfunktion im Parameterraum Einfluss nimmt. Nur innerhalb dieses Bereiches hat die jeweilige Basisfunktion einen Funktionswert. Außerhalb ist ihr Einfluss dagegen zu Null definiert. Diese Eigenschafft wird auch als lokaler Einfluss der Basisfunktionen bezeichnet und ermöglicht es auch bei Kurven mit einer hohen Anzahl an Kontrollpunkten lokale Veränderungen vorzunehmen, ohne die Gesamtgeometrie zu verändern.
+
+Die wahl des polynomialen Grades einer Kurve beeinflusst ihre Geometrie im Raum maßgeblich. Linien und Polylinien sind das Ergebnis von NURBS-Kurven des ersten Grades , Kreise und Elypsen sind Beispiele für Kurven des zweiten Grades und Freiformkurven werden gängigerweise aus einer Kombination von NURBS-Kurven des dritten bzw. fünften Grades erstellt [REF Rhino3D Developer Guides (Degree)].
+
+\large
+\vspace{1.5cm}
+\hfil
+Hier Bild von kurven 1.-, 2.-, und 3. Grades
+
+\normalsize
+% Kontrollpunkte
+\subsection{Kontrollpunkte}
+Die Kontrollpunkte einer NURBS-Kurve sind maßgeblich für deren Geometrie im Raum verantwortlich. Formell bilden sie in diesem Zusammenhang eine Liste aus Punktkoordinaten im Raum, mit zugewiesenem X-, Y-, Z- Wert, sowie einem individuellen NURBS-Gewicht. Zur Erstellung einer NURBS-Kurve mus die vorhandene Anzahl an Kontrollpunkten mindestens d+1 betragen, wobei d für den polynomialen Grad der Kurve steht. Der Grad einer NURBS-Kurve ist also direkt abhängig von der, auf ihr definierten Anzahl an Kontrollpunkten pro Element. Der intuitiveste Weg die Form einer NURBS-Kurve zu verändern ist durch Verschieben einzelner Kontrollpunkte. Das bedeutet allerdings nicht, dass die Punkte auch auf der Kurve liegen müssen. Abgesehen vom ersten und letzten Punkt einer jeden Kurve werden im Normalfall alle verbleibenden Kontrollpunkte durch den Kurvenverlauf lediglich (unterschiedlich stark) approximiert. Wie stark einzelne Punkte dabei angenähert werden ist wiederum sowohl von dem polynomialen Grad als auch von den, den Punkten zugewiesenen NURBS-Gewichten abhängig.
+
+% Knoten knots
+\subsection{Knoten (engl. knots)}
+Knoten sind als Koordinaten im parametischen Raum definiert und unterteilen diesen in Intervalle, die auch Sektionen (engl. sections) genannt werden. Die Anzahl nötiger Knoten berechnet sich in Abhängigkeit der vorhandenen Kontrollpunkte $p$ und des Grades der Kurve $n$ als: 
+\begin{equation*}
+        m = n + d + 1
+\end{equation*}
+
+
+% Knotenvektor | knot vector
+\subsection{Knotenvektor (engl. knot vector)}
+Jeder NURBS-Kurve ist zwingend eine Liste zugeordnet, die die entsprechenden Knoten (engl. knots) enthält. Diese Liste, häufig auch als Knotenvektor (engl. knot vector) bezeichnet, enthält die nötigen Informationen wie die Knoten über den Parameterraum eines Elementes verteilt sind. Für den Sonderfall, dass alle Knoten gleichmäßig verteilt sind, wird der Knotenvektor als uniform bezeichnet.  Die Anzahl der Knoten im Knotenvektor ist abhängig von der Anzahl an Kontrollpunkten so wie von dem definierten Kurvengrad. Diese Bedingung ist in beide Richtungen gültig. Verändert man die Anzahl der Knoten einer Kurve, müssen demnach ebenfalls die Kontrollpunkte angepasst werden. Eine initiierende Veränderung des Kurvengrades ist ebenfalls möglich, aber keine gängige Praxis. Wichtig ist außerdem, dass die Einträge des Knotenvektors immer in aufteigender Reihenfolge sortiert sind. 
+
+Das Beispiel eines Knotenvektors sieht wie folgt aus:
+\begin{equation*}
+    \Xi = [0.0, 0.0, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 5.0, 5.0]
+\end{equation*}
+
+% Knot span | Knotenstützweite
+\subsection{Knotenstützweite (engl. knot span)}
+Wie im zusammenhang mit dem polynomialen Grad einer NURBS-Kurve beschrieben wird, gibt der Grad $d$ vor auf wie viele Knotenintervalle ein Basisfunktion einfluss nimmt. Dieses ist gleichbedeutend mit der Anzahl an benachbarter Kontrollpunkte die von dem jeweils betrachteten Punkt beeinflusst werden $k = d + 1$. Die sich ergebende Untersektion des Knotenvektors wird als Knotenstützweite (engl. knot span) bezeichnet. Umgekehrt ergibt sich die Anzahl vorhandener Stützbereiche anhand der Kontrollpunkte n als $n - d$.
+
+
+\subsection{Basisfunktionen (engl. shape functions)}
+
+
+
+\subsection{Knoten Vielfältigkeit (engl. multiplicity)}
+
+\subsection{Offener Knotenvektor}
+
+\subsection{lokaler Support}
+
+\subsection{NURBS Gewichte (engl.weights)}
 
 
 \end{document}
