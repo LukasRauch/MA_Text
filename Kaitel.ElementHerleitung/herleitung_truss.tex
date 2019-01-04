@@ -105,18 +105,20 @@ Setzt man das Ergebnis in die Gleichung [Referenz Green-Lagrange Gleichung] ein,
 
 
 
-\chapter{NURBS Begrifflichkeiten}  \setcounter{page}{1}   % setzt Seitenzaehlung auf 1
+\chapter{IGA Begrifflichkeiten}  \setcounter{page}{1}   % setzt Seitenzaehlung auf 1
 % Zitate aus Büchern werden so gemacht, siehe in \cite{schoenbucher03} oder \cite{marshall67}.
 
-\section{Definition der wichtigeten Begrifflichkeiten bei der Arbeit mit NURBS}
+\section{Definition der wichtigeten Begrifflichkeiten bei der Arbeit mit IGA}
 
+% Elemente
 \subsection{Elemente}
+
 
 % Polynomialer Grad (engl. polynomial degree
 \subsection{Polynomialer Grad (engl. polynomial degree)}
 Der polynomiale Grad einer Kurve wird als ganzzahlige, positive Nummer angegeben, wobei der kleinst mögliche Grad bei 1 beginnt. Nach oben ist der Grad einer Kurve $d$ nur durch seine Anzahl an Kontrollpunkten n begrenzt $d = n - 1$. Allderdings ist zu berücksichtigen, dass sich mit steigendem Grad die approximation des Kontrollpunktpolygons verschlechtert und der Algorithmus zunehmend instabil wird [REF Iga Skript S. 13]. Der definierte polynomiale Grad einer Kurve gibt vor, auf wie viele Intervalle $d$ eine jede Basisfunktion im Parameterraum Einfluss nimmt. Nur innerhalb dieses Bereiches hat die jeweilige Basisfunktion einen Funktionswert. Außerhalb ist ihr Einfluss dagegen zu Null definiert. Diese Eigenschafft wird auch als lokaler Einfluss der Basisfunktionen bezeichnet und ermöglicht es auch bei Kurven mit einer hohen Anzahl an Kontrollpunkten lokale Veränderungen vorzunehmen, ohne die Gesamtgeometrie zu verändern.
 
-Die wahl des polynomialen Grades einer Kurve beeinflusst ihre Geometrie im Raum maßgeblich. Linien und Polylinien sind das Ergebnis von NURBS-Kurven des ersten Grades , Kreise und Elypsen sind Beispiele für Kurven des zweiten Grades und Freiformkurven werden gängigerweise aus einer Kombination von NURBS-Kurven des dritten bzw. fünften Grades erstellt [REF Rhino3D Developer Guides (Degree)].
+Die wahl des polynomialen Grades einer Kurve beeinflusst ihre Geometrie im Raum maßgeblich. Linien und Polylinien sind das Ergebnis von B-Spline-Kurven des ersten Grades , Kreise und Elypsen sind Beispiele für Kurven des zweiten Grades und Freiformkurven werden gängigerweise aus einer Kombination von B-Spline-Kurven des dritten bzw. fünften Grades erstellt [REF Rhino3D Developer Guides (Degree)].
 
 \large
 \vspace{1.5cm}
@@ -126,41 +128,68 @@ Hier Bild von kurven 1.-, 2.-, und 3. Grades
 \normalsize
 % Kontrollpunkte
 \subsection{Kontrollpunkte}
-Die Kontrollpunkte einer NURBS-Kurve sind maßgeblich für deren Geometrie im Raum verantwortlich. Formell bilden sie in diesem Zusammenhang eine Liste aus Punktkoordinaten im Raum, mit zugewiesenem X-, Y-, Z- Wert, sowie einem individuellen NURBS-Gewicht. Zur Erstellung einer NURBS-Kurve mus die vorhandene Anzahl an Kontrollpunkten mindestens d+1 betragen, wobei d für den polynomialen Grad der Kurve steht. Der Grad einer NURBS-Kurve ist also direkt abhängig von der, auf ihr definierten Anzahl an Kontrollpunkten pro Element. Der intuitiveste Weg die Form einer NURBS-Kurve zu verändern ist durch Verschieben einzelner Kontrollpunkte. Das bedeutet allerdings nicht, dass die Punkte auch auf der Kurve liegen müssen. Abgesehen vom ersten und letzten Punkt einer jeden Kurve werden im Normalfall alle verbleibenden Kontrollpunkte durch den Kurvenverlauf lediglich (unterschiedlich stark) approximiert. Wie stark einzelne Punkte dabei angenähert werden ist wiederum sowohl von dem polynomialen Grad als auch von den, den Punkten zugewiesenen NURBS-Gewichten abhängig.
+Die Kontrollpunkte einer B-Spline-Kurve sind maßgeblich für deren Geometrie im Raum verantwortlich. Formell bilden sie in diesem Zusammenhang eine Liste aus Punktkoordinaten im Raum, mit zugewiesenem X-, Y-, Z- Wert, sowie im Falle von NURBS einem individuellen NURBS-Gewicht. Zur Erstellung einer B-Spline-Kurve muss die vorhandene Anzahl an Kontrollpunkten mindestens d+1 betragen, wobei d für den polynomialen Grad der Kurve steht. Der Grad einer B-Spline-Kurve ist also direkt abhängig von der, auf ihr definierten Anzahl an Kontrollpunkten pro Element. Der intuitiveste Weg die Form einer B-Spline-Kurve zu verändern ist durch Verschieben einzelner Kontrollpunkte. Das bedeutet allerdings nicht, dass die Punkte auch auf der Kurve liegen müssen. Abgesehen vom ersten und letzten Punkt einer jeden Kurve werden im Normalfall alle verbleibenden Kontrollpunkte durch den Kurvenverlauf lediglich (unterschiedlich stark) approximiert. Wie stark einzelne Punkte dabei angenähert werden ist wiederum sowohl von dem polynomialen Grad als auch von den, den Punkten zugewiesenen B-Spline-Gewichten abhängig.
 
 % Knoten knots
 \subsection{Knoten (engl. knots)}
-Knoten sind als Koordinaten im parametischen Raum definiert und unterteilen diesen in Intervalle, die auch Sektionen (engl. sections) genannt werden. Die Anzahl nötiger Knoten berechnet sich in Abhängigkeit der vorhandenen Kontrollpunkte $p$ und des Grades der Kurve $n$ als: 
+Knoten sind als Koordinaten im parametischen Raum definiert und unterteilen diesen in Intervalle, die auch Sektionen (engl. sections) genannt werden. Die Anzahl nötiger Knoten berechnet sich in Abhängigkeit der vorhandenen Kontrollpunkte $n$ und des Grades der Kurve $d$ als: 
 \begin{equation*}
         m = n + d + 1
 \end{equation*}
 
-
 % Knotenvektor | knot vector
 \subsection{Knotenvektor (engl. knot vector)}
-Jeder NURBS-Kurve ist zwingend eine Liste zugeordnet, die die entsprechenden Knoten (engl. knots) enthält. Diese Liste, häufig auch als Knotenvektor (engl. knot vector) bezeichnet, enthält die nötigen Informationen wie die Knoten über den Parameterraum eines Elementes verteilt sind. Für den Sonderfall, dass alle Knoten gleichmäßig verteilt sind, wird der Knotenvektor als uniform bezeichnet.  Die Anzahl der Knoten im Knotenvektor ist abhängig von der Anzahl an Kontrollpunkten so wie von dem definierten Kurvengrad. Diese Bedingung ist in beide Richtungen gültig. Verändert man die Anzahl der Knoten einer Kurve, müssen demnach ebenfalls die Kontrollpunkte angepasst werden. Eine initiierende Veränderung des Kurvengrades ist ebenfalls möglich, aber keine gängige Praxis. Wichtig ist außerdem, dass die Einträge des Knotenvektors immer in aufteigender Reihenfolge sortiert sind. 
+\label{subsec:knot vector}
+Jeder B-Spline-Kurve ist zwingend eine Liste zugeordnet, die die entsprechenden Knoten (engl. knots) enthält. Diese Liste, häufig auch als Knotenvektor (engl. knot vector) bezeichnet, enthält die nötigen Informationen wie die Knoten über den Parameterraum eines Elementes verteilt sind. Für den Sonderfall, dass alle Knoten gleichmäßig verteilt sind, wird der Knotenvektor als uniform bezeichnet.  Die Anzahl der Knoten im Knotenvektor ist abhängig von der Anzahl an Kontrollpunkten so wie von dem definierten Kurvengrad. Diese Bedingung ist in beide Richtungen gültig. Verändert man die Anzahl der Knoten einer Kurve, müssen demnach ebenfalls die Kontrollpunkte angepasst werden. Eine initiierende Veränderung des Kurvengrades ist ebenfalls möglich, aber keine gängige Praxis. Wichtig ist außerdem, dass die Einträge des Knotenvektors immer in aufteigender Reihenfolge sortiert sind. 
 
-Das Beispiel eines Knotenvektors sieht wie folgt aus:
+Das Beispiel eines offenen Knotenvektors dritten Grades mit 7 Kontrollpunkten sieht wie folgt aus:
 \begin{equation*}
-    \Xi = [0.0, 0.0, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 5.0, 5.0]
+    \Xi = [0.0, 0.0, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 6.0, 6.0]
 \end{equation*}
 
 % Knot span | Knotenstützweite
 \subsection{Knotenstützweite (engl. knot span)}
-Wie im zusammenhang mit dem polynomialen Grad einer NURBS-Kurve beschrieben wird, gibt der Grad $d$ vor auf wie viele Knotenintervalle ein Basisfunktion einfluss nimmt. Dieses ist gleichbedeutend mit der Anzahl an benachbarter Kontrollpunkte die von dem jeweils betrachteten Punkt beeinflusst werden $k = d + 1$. Die sich ergebende Untersektion des Knotenvektors wird als Knotenstützweite (engl. knot span) bezeichnet. Umgekehrt ergibt sich die Anzahl vorhandener Stützbereiche anhand der Kontrollpunkte n als $n - d$.
+\label{subsec: Knotenstuetzweite}
+Wie im zusammenhang mit dem polynomialen Grad einer B-Spline-Kurve beschrieben wird, gibt der Grad $d$ vor auf wie viele Knotenintervalle ein Basisfunktion einfluss nimmt. Dieses ist gleichbedeutend mit der Anzahl an benachbarter Kontrollpunkte die von dem jeweils betrachteten Punkt beeinflusst werden $k = d + 1$. Die sich ergebende Untersektion des Knotenvektors wird als Knotenstützweite (engl. knot span) bezeichnet. Umgekehrt ergibt sich die Anzahl vorhandener Stützbereiche anhand der Knoten $m$ als $m - d$. Für den speziellen Fall dass der Knotenvektor keine inneren Knoten enthält und daher aus einem einzigen Stützbereich besteht, entsprechen NURBS den nicht-rationalen Bézier Kurven. 
 
+Anhand des Beispiels aus Abschnitt \ref{subsec:knot vector} ergeben sich für die Kurve dritten Grades mit dem offenen Knotenvektor 
+\begin{equation*}
+    \Xi = [0.0, 0.0, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 6.0, 6.0]
+\end{equation*}
+die Knotenstützweiten wie folgt:
+\begin{equation*}
+\begin{split}
+    N_{0,2} : \{0,0,0,1\} \\
+    N_{1,2} : \{0,0,1,2\} \\
+    N_{2,2} : \{0,1,2,3\} \\
+    N_{3,2} : \{1,2,3,4\} \\
+    N_{4,2} : \{2,3,4,5\} \\
+    N_{5,2} : \{3,4,5,6\} \\
+    N_{6,2} : \{4,5,6,6\} \\
+    N_{7,2} : \{5,6,6,6\} \\   
+\end{split}
+\end{equation*}
 
+% Mehrfachknoten 
+\subsection{Mehrfachknoten (engl. multiplicity)}
+Ein Knoten kann innerhalb des Knotenvektors einer B-Spline-Kurve mehrfach auftauchen. Im Englischen spricht man in diesem Fall von der multiplizität des Knotenvektors. Die maximale Häufigkeit eines solchen Mehrfachknotens ist durch den polynomialen Grad einer Kurve beschränkt. Innerhalb der Knotenstürzweite, das heißt zwischen zwei Knoten, ist die entsprechende Basisfunktion $C^{\infty}$ kontinuierlich definiert. An Stelle eines einfachen Knotens ist die Kontinuität der Kurve $C^{d-1}$ wobei $d$ dem polynomialen Grad der Kurve entspricht. Erhöhung der multiplizität $k$ einer Kurve führt somit zur Reduzierung ihrer Kontinuität $C^{d-k}$. Ein Vorteil der B-Spline Kurven ist, dass durch die Verringerung der Kontinuität zu $C^{0}$ beispielsweise Knicke in ihrer Geometry erzeugt werden können.
+
+% Open Knot Vector
+\subsection{Offene Knotenvektoren (engl. open knot vector)}
+Für den Fall dass ein Knotenvektor an Stelle des ersten und letzten Knoten eine multiplizität von $k = d$ hat, spricht man von einem offenen Knotenvektor (häufig auch eingespannter oder nicht-periodischer Knotenvektor genannt). B-Splines die dieses Kriterium erfüllen interpolieren mit ihrem Kurvenverlauf die genaue Position des ersten und letzten Kontrollpunktes. Außerdem ist die Steigung der Kurve an diesen beiden Stellen eine Tangente des erzeugenden Kontrollpolygons.
+
+% Shape Functions
 \subsection{Basisfunktionen (engl. shape functions)}
+Genauso wie Bézier-Kurven sind auch B-Spline-Kurven eine lineare Kombination aus Basisfunktionen uns Kontrollpunkten. Die Basisfunktionen werden als B-Splines (Kurzform Basis-Splines) bezeichnet, die als stückweise Polynome auf den Intervallen des Parameterraumes definiert sind. Der unterschied zu den Bézier-Kurven besteht darin, dass die B-Spline Basisfunktionen jeweils nur auf einer begrenzten Anzahl an Intervallen definiert ist. Diese wurden in Abschnitt \ref{subsec: Knotenstuetzweite} bereits als Knotenstützweite bezeichnet. Außerhalb der Knotenstützweite sind die zugeordneten Basisfunktionen zu null definiert. 
+Eine weitere zwingend notwendige Eigenschaft der Basisfunktionen ist ihre Einheitlichkeit. In jedem beliebigen Knotenstützbereich zwischen zwei Knoten $[u_i, u_{i+1})$ muss an der Stelle $u$ die Summe aller Basisfunktionen $\sum^{i}_{j=i-p} {N_{j,p}(u)} = 1$ sein. Diese Eigenschaft wird auch als die Zerlegung der Eins (engl. partition of unity) bezeichnet. 
 
-
-
-\subsection{Knoten Vielfältigkeit (engl. multiplicity)}
-
-\subsection{Offener Knotenvektor}
-
+% Local Support
 \subsection{lokaler Support}
 
-\subsection{NURBS Gewichte (engl.weights)}
 
+
+% NURBS Gewichte 
+\subsection{NURBS Gewichte (engl. weights)}
+Im Falle von NURBS-Kurven ist jedem Kontrollpunkt ein so genanntes Gewicht zugeordnet. Um den Einfluss der Gewichte zu verstehen, ist es einfach sich diese als eine Art Gravitation der Kontrollpunkte auf den Kurvenverlauf vorzustellen. Je höher das relative Gewicht eines Kontrollpunktes desto näher wird der Kurvenverlauf an diesen Punkt herangezogen. Mit wenigen Ausnahmen sind diese Gewichte positive Zahlen. Für den Sonderfall, dass die Gewichte aller Kontrollpunkte gleich sind (i.d.R. eins), wird die Kurve als nicht-rational bezeichnet und unterscheidet sich nicht mehr von einer regulären B-Spline Kurve.  Während B-Spline Kurven eine Kombination aus aus stückweise polynomialen Funktionen sind, werden NURBS aus stückweise rationalen Funktionen kombiniert. Die Modifikation der Splines durch Gewichting ermöglicht es Geometrien wir beispielsweise exakt konischen Formen, Kreise oder Hyperboloiden zu generieren. Mit B-Splines ist dies hingengen nicht möglich. 
 
 \end{document}
