@@ -1,6 +1,6 @@
 \documentclass[german,a4paper,12pt,oneside]{scrbook}
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath, amsthm, amssymb}
+\usepackage{amsmath, amsthm, amssymb, mathtools}
 \usepackage{bm}
 \usepackage[ngerman]{babel}
 \usepackage{marvosym}
@@ -41,20 +41,21 @@ hier kommt noch mehr rein
 
 
 \section{Herleitung eines Fachwerkstab Elementes aus dem Kontinuum}
+\subsection{Kinematik}
 
-Das nachfolgende Kapitel behandelt die theoretische Herleitung eines Fachwerkstab Elementes mit den Methoden der Kontinuumsmechanik. Das Kapitel ist dahingehend zu interpretieren, dass es aufverständliche Art und Weise das Vorgen bei der Herleitung eines allgemeinen Elementes einschließt, aber die komplexe Mechaniken eines Balkenelementes außer Acht lässt.
+Das nachfolgende Kapitel behandelt die theoretische Herleitung eines Fachwerkstab-Elementes mit den Methoden der Kontinuumsmechanik. Das Kapitel ist dahingehend zu interpretieren, dass es auf verständliche Art und Weise das Vorgen bei der Herleitung eines allgemeinen Elementes einschließt, aber die komplexe Mechaniken eines Balkenelementes außer Acht lässt.
 
-Einhergehend mit der Definition des Fachwerkes unterwirft sich das allgemeine Fachwerkelement einigen vereinfachten Annahmen. So wird im Nachfolgenden davon ausgegangen, dass das Element an den Knotenpunkten ideal gelenkig gelagert ist. Äußere Lasten sind nicht direkt auf den Stab aufzubringen, sondern ausschließlich über die Knoten einzuleiten. Mögliche räumlich ausgedehnte Lasten sind dahingehend im Rahmen einer Vorberechnung auf die Fachwerkknoten Aufzuteilen.  Als klassisches Stabtragwerk sind die Längsabmessungen sehr viel größer als die entsprechenden Dicken des Querschnittes in Höhe und Breite. Bezüglich des Kräfteflusses innerhalb des betrachteten Elementes kann davon ausgegangen werden, dass alle Kräfte in Längsrichtung auf den Schwerpunkt des ideellen Querschnittes bezogen sind. Außerdem ist davon auszugehen, dass ein Fachwerkstab zwischen zwei Knoten ideal grade Verläuft. Dass bedeutet dass innerhalb des Elements keine Momente bzw. Schubkräfte auftreten. Statt dessen reduziert sich das Element auf die Übertragung von reinen Normalkräften.
+Einhergehend mit der Definition des Fachwerkes unterwirft sich das allgemeine Fachwerkelement einigen vereinfachten Annahmen. So wird im Nachfolgenden davon ausgegangen, dass das Element an den Knotenpunkten ideal gelenkig gelagert ist. Äußere Lasten sind nicht direkt auf den Stab aufzubringen, sondern ausschließlich über die Knoten einzuleiten. In diesem Sinne sind mögliche räumlich ausgedehnte Lasten im Rahmen einer Vorberechnung auf die Fachwerkknoten Aufzuteilen.  Als klassisches Stabtragwerk sind die Längsabmessungen sehr viel größer als die entsprechenden Dicken des Querschnittes in Höhe und Breite. Bezüglich des Kräfteflusses innerhalb des betrachteten Elementes kann davon ausgegangen werden, dass alle Kräfte in Längsrichtung auf den Schwerpunkt des ideellen Querschnittes bezogen sind. Außerdem ist davon auszugehen, dass ein Fachwerkstab zwischen zwei Knoten ideal grade Verläuft. Dass bedeutet dass innerhalb des Elements keine Momente bzw. Schubkräfte auftreten. Statt dessen reduziert sich das Element auf die Übertragung von reinen Normalkräften.
 
-Grundsätzlich sei anzumerken, dass es  mehrere herangehenseisen gibt, um die Mechanik eines solchen Elementes zu beschreiben. An dieser Stelle konzentrieren wir uns auf die Herleitung eines algemeinen Elementes unter Zuhilfenahme der Kontinuumsmechanik um seine Geometrie im Raum zu beschreiben. Die eigentliche Elementformulierung erfolgt im Anschluss über das Prinzip der virtuellen Arbeit Durch die Koppelung von Spannungen \textbf{S} und Dehnungen \textbf{E}. 
+Grundsätzlich sei anzumerken, dass es  mehrere herangehenseisen gibt, um die Mechanik eines solchen Elementes zu beschreiben. An dieser Stelle konzentrieren wir uns auf die Herleitung eines algemeinen Elementes unter Zuhilfenahme der Kontinuumsmechanik um seine Geometrie im Raum zu beschreiben. Die eigentliche Elementformulierung erfolgt im Anschluss über das Prinzip der virtuellen Arbeit durch die Koppelung von Spannungen \textbf{S} und Dehnungen \textbf{E}. 
 
 \LARGE % TODO
 \emph{Hier Bild von Ausgangszustand einfügen: vgl. Figure 5.1 IGA Skript}
 
 \normalsize
-Darstellung [Referenz] zeigt schematischs den unverformten so wie den verformten Zustand einen Stabes mit seinem jeweiligen Positionsvektor im geometrischen Raum. Die Vektornotation erfolgt in Krummliniger Koordinatendarstellung (nachfolgend als \glqq\emph{Curvilinear}\grqq ~aus dem Englsichen bezeichnet) als eine Funktion aus $\Theta^1$ in einem euklidischen Vektorraum.
+Die Darstellung [Referenz] zeigt schematisch den unverformten so wie den verformten Zustand einen Stabes mit seinem jeweiligen Positionsvektor im geometrischen Raum. Die Vektornotation erfolgt in Krummliniger Koordinatendarstellung (nachfolgend als \glqq\emph{Curvilinear}\grqq ~aus dem Englsichen bezeichnet) als eine Funktion aus $\Theta^1$ in einem euklidischen Vektorraum.
 
-Der Stab wird als Reduktion auf seine Mittelachse beschrieben. Diese Linie besitzt im Raum keine Ausdehnung. Jeder Beliebige Punkt auf der Stabsystemachse kann durch seinen Positionsvektor \textbf{R} in Abhängigkeit des Kurvenparameters $\Theta^1$ beschrieben werden. Ein beliebiger Punkt des Querschnittes im Raum kann wiederum durch ein normalisiertes Koordinatensystem mit orthogonalen Basisvektoren \textbf{A}$_{\alpha}$ in Abhängigkeit der Parameter $\Theta^2$ und $\Theta^3$ bestimmt werden. Nachfolgend gelten vereinfachten Annahmen der Bernoullischen Balkentheorie. Demnach kann davon ausgegangen werden, dass die Basisvektoren auch nach Deformation des Stabes senkrecht auf der Balkenachse stehen. Dies induziert ein ebenbleiben des Querschnittes bei Verformung des Elementes. Wir sprechen von einem konstanten, starren Querschnitt.
+Der Stab wird als Reduktion auf seine Mittelachse beschrieben. Diese Linie besitzt im Raum keine Ausdehnung. Jeder beliebige Punkt auf der Stabsystemachse kann durch seinen Positionsvektor \textbf{R} in Abhängigkeit des Kurvenparameters $\Theta^1$ beschrieben werden. Ein beliebiger Punkt des Stabquerschnittes im Raum kann wiederum durch ein normalisiertes Koordinatensystem mit orthogonalen Basisvektoren \textbf{A}$_{\alpha}$ (und \textbf{a}$_{\alpha}$) in Abhängigkeit der Parameter $\Theta^2$ und $\Theta^3$ bestimmt werden. Nachfolgend gelten die vereinfachten Annahmen der Bernoullischen Balkentheorie. Demnach kann davon ausgegangen werden, dass die Basisvektoren auch nach Deformation des Stabes senkrecht auf der Balkenachse stehen. Dies induziert ein ebenbleiben des Querschnittes bei Verformung des Elementes. Wir sprechen von einem konstanten, starren Querschnitt.
 % Vielleicht noch ergänzen, dass Theta(2,3) und die korrespondierenden Alpha(2,3) unabhängig von dem Kurvenparameter Theta(1) sind 
 
 \vspace{1.0cm}
@@ -68,6 +69,7 @@ Parametrisierte Darstellung:
     \end{equation}
 \end{subequations}
 
+\vspace{0.5cm}
 Wie in Kapitel [Referenz] beschrieben, sind die Basisvektoren eines Kontinuums wie folgt definiert:
 
 \begin{subequations}
@@ -79,10 +81,11 @@ Wie in Kapitel [Referenz] beschrieben, sind die Basisvektoren eines Kontinuums w
     \end{equation}
 \end{subequations}
 
+\vspace{0.5cm}
 Infolge der Vorschrift aus Gleichung \eqref{Positionsvektor_a} und \eqref{Positionsvektor_b} ergeben sich daraus die Basisvektoren des Querschnittes im unverformten sowie im verformten Zustand abhängig vom Kurvenparameter $\Theta^1$ wie folgt: 
 
 \begin{subequations}
-    \begin{equation}
+    \begin{equation} \label{Basisvektor_A1}
         \bm{G}_1 = \bm{X}_{,1} = \bm{A}_1(\Theta^1), \qquad     
         \bm{g}_1 = \bm{x}_{,1} = \bm{a}_1(\theta^1)
     \end{equation}
@@ -90,17 +93,113 @@ Infolge der Vorschrift aus Gleichung \eqref{Positionsvektor_a} und \eqref{Positi
         \bm{G}_2 = \bm{X}_{,2} = \bm{A}_2, \qquad     
         \bm{g}_2 = \bm{x}_{,2} = \bm{a}_2
     \end{equation}
-    \begin{equation}
+    \begin{equation} \label{Basisvektor_A3}
         \bm{G}_1 = \bm{X}_{,1} = \bm{A}_1, \qquad     
         \bm{g}_1 = \bm{x}_{,1} = \bm{a}_1
     \end{equation}
 \end{subequations}
 
-\vspace{1.0cm}
-Damit lässt sich die gegebene Konfiguration vor und nach der Deformation beschrieben. Die drei Basisvektoren an einem Punkt definieren wiederum die Metrik in
+\vspace{0.5cm}
+Mit dieser Definition lässt sich die Position jeder gegebenen Konfiguration vor und nach ihrer Deformation im curvilinearen Koordinatenraum parametrisch beschreiben.
 
-Setzt man das Ergebnis in die Gleichung [Referenz Green-Lagrange Gleichung] ein, erhält man somit 
+\vspace{0.5cm}
+Dehnung kann definiert werden als die Längenänderung eines beliebigen Elementes die mit seiner Bewegung einhergeht: 
 
+\begin{equation}
+    (ds)^2 - (dS)^2 = (d\bm{r})^2 - (d\bm{R})^2    
+\end{equation}
+
+\vspace{0.5cm}
+Davon abgeleitet beschreibt der \emph{Green-Lagrange} Tensor Dehnungen im curvilinearen Raum und ist in algemeiner Form folgend definiert, wobei $g_{ij}$ und $G_{ij}$ die Metriken der Basisvektoren symbolisieren.
+
+\begin{equation}
+    E_{ij} = \frac{1}{2} (g_{ij} - G_{ij} )
+\end{equation}
+
+\vspace{0.5cm}
+Setzt man die Basisvektoren aus Gleichung \eqref{Basisvektor_A1} bis \eqref{Basisvektor_A3} in den \emph{Green-Lagrange} Dehnungstensor ein, erhält man ein Dehnunungsmaß für beliebige Verformungen des Elementes. An der Stelle ist zu berücksichtigen, dass anhand der Definition eines Fachwerkelementes die Annahme getroffen wird, dass das Element sich ausschließlich in Systemachse verformen kann. Mit $E_{12} = E_{21} = E_{22} = E_{13} = E_{31} = E_{33} = 0$ reduziert sich der Dehnungstensor auf einen einzelnen, skalaren Eintrag $E_{11}$. Die entsprechenden Metriken der verformten und unverformten Basisvektoren berechnen sich somit zu :
+
+\begin{subequations}
+    \begin{equation}
+        G_{11}(\Theta^1) = \bm{G}_1 \cdot \bm{G}_1 = \bm{X}_{,1} \cdot \bm{X}_{,1} = \bm{A}_1 \cdot \bm{A}_1 = A_{11}    
+    \end{equation}
+    \begin{equation}
+        g_{11}(\Theta^1) = \bm{g}_1 \cdot \bm{g}_1 = \bm{x}_{,1} \cdot \bm{x}_{,1} = \bm{a}_1 \cdot \bm{a}_1 = a_{11}  
+    \end{equation}
+\end{subequations}
+
+\vspace{0.5cm}
+Der Dehnungstensor im curvilinearen Koordinatenraum schreibt sich damit zu
+
+\begin{equation} \label{E_11_parameter}
+    \epsilon = E_{11}(\Theta^1) =  \frac{1}{2}(a_{11} - A_{11})
+\end{equation}
+
+\vspace{0.5cm}
+In der gängigen Ingenieursliteratur sind physische Dehnungen mit Einfluss auf das Materialgesetzt (engl. constitutive law) im kartesischen Koordinatenraum definiert. Die curvilinearen Basisvektoren sind daher zu transformieren. Variablen die sich im Folgenden auf das kartesische Koordinatensystem beziehen werden nachvollziehbar mit $\tilde{( .. )}$ notiert. Da die Basisvektoren des parametischen, genauso wie die des kartesischen Koordinatensystemes immer rechtwinklig auf einander stehen, sind ihre Richtungen identisch. Allerdings haben kartesische Basisvektoren immer Einheitslänge. Somit müssen die parametischen Basisvektoren im Zuge einer Vektortransformation zusätzlich normiert werden. 
+
+\vspace{0.5cm}
+Die Vektortransformation der Basisvektoren vom Rarameter- in den kartesischen Koordinatenraum ist definiert als: 
+
+\begin{equation}
+    \bm{e}_i = \frac{\bm{g}_i}{||\bm{g}_i||_2}    
+\end{equation}
+
+\vspace{0.5cm}
+Unter Anwendung des Transformationsgesetzes zwischen zwei Koordinatensystemen kann der Dehnungstensor im geometrischen Raum wie folgt berechnet werden: 
+
+\begin{subequations}
+    \begin{equation*}
+        \tilde{e}_{kl} = g_{ij}(\bm{e}_k \cdot \bm{g}^{i})(\bm{g}^{j} \cdot \bm{e}_l)
+        = g_{ij} \left( \frac{\bm{g}_k}{||\bm{g}_k||_2} \cdot \bm{g}^{i} \right)
+        \left( \bm{g}^{j} \cdot \frac{\bm{g}_l}{||\bm{g}_l||_2}  \right)
+    \end{equation*}
+    \begin{equation}
+            \tilde{e}_{kl} = \frac{g_{kl}}{||\bm{g}_k||_2 \; ||\bm{g}_l||_2}
+    \end{equation}
+    \begin{equation*}
+        \tilde{E}_{kl} = G_{ij}(\bm{E}_k \cdot \bm{G}^{i})(\bm{G}^{j} \cdot \bm{E}_l)
+        = G_{ij} \left( \frac{\bm{G}_k}{||\bm{G}_k||_2} \cdot \bm{G}^{i} \right)
+        \left( \bm{G}^{j} \cdot \frac{\bm{G}_l}{||\bm{G}_l||_2}  \right)
+    \end{equation*}    
+    \begin{equation}    
+        \tilde{E}_{kl} = \frac{G_{kl}}{||\bm{G}_k||_2 \; ||\bm{G}_l||_2}
+    \end{equation}    
+\end{subequations}
+
+\vspace{0.5cm}
+Entsprechend dem curvilinearen parameterraum in Gleichung \eqref{E_11_parameter} lässt sich die axiale Dehnung $\epsilon$ im geometrischen Raum berechnen:
+
+\begin{equation}
+    \tilde{E}_{11}(\Theta^1) = \frac{\epsilon}{{||\bm{A}_1||_2}^2}    
+\end{equation}
+
+\vspace{2cm}
+\subsection{Strukturmechanik}
+Die Strukturmechanik hinter dem Element wird nach dem Prinzip der virtuellen Arbeit hergeleitet. Demnach wird auf ein System eine infinitesimal kleine Verschiebung $\delta u$ aufgebracht. Das System ist im Gleichgewicht falls die Summe aus geleisteter  interner virtueller Arbeit und  externer virtueller Arbeit für die virtuelle Verschiebung $\delta \bm{u}$ Null wird [REFERENZ Mechanics of structures S.90]. 
+
+\begin{equation}        
+    \delta W = - \delta W_{int} - \delta W_{ext} = 0    
+\end{equation}      
+
+\vspace{0.5cm}
+Die interne virtuelle Arbeit ist definiert als:
+
+\begin{equation}
+    \delta W_{int} = \int_{\Omega}^{} \bm{S} : \delta \bm{E} \; d \Omega
+\end{equation}
+
+\vspace{0.5cm}
+Die exteren virtuelle Arbeit ist definiert als:
+
+\begin{equation}
+    \delta W_{ext} = \int_ {\Gamma_N}{} \bm{t} \; \delta \bm{u} \; d \Gamma \; 
+    + \; \int_{\Omega}{} \rho_0 \bm{B} \; \delta \bm{u} \; d \Omega
+\end{equation}
+
+
+\vspace{0.5cm}
+wobei $\Omega$ für das Volumen und $\Gamma$ für die Oberfläche in der Ausgangskonfiguration stehen. $\delta \bm{E}$ repräsentiert die virtuellen Dehnungen und der Tensor $\bm{S}$ die energetisch zugeordneten internen Spannungen. Der Vektor $\bm{T}$ entspricht den an der Oberfläche wirkenden Kräften und Vektor $\bm{B}$ steht für die von außen wirkenden Volumenkräfte (engl. body forces). 
 
 
 
