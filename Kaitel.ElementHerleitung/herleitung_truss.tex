@@ -157,6 +157,9 @@ Unter Anwendung des Transformationsgesetzes zwischen zwei Koordinatensystemen ka
     \begin{equation}
             \tilde{e}_{kl} = \frac{g_{kl}}{||\bm{g}_k||_2 \; ||\bm{g}_l||_2}
     \end{equation}
+
+\vspace{0.5cm}
+
     \begin{equation*}
         \tilde{E}_{kl} = G_{ij}(\bm{E}_k \cdot \bm{G}^{i})(\bm{G}^{j} \cdot \bm{E}_l)
         = G_{ij} \left( \frac{\bm{G}_k}{||\bm{G}_k||_2} \cdot \bm{G}^{i} \right)
@@ -176,30 +179,119 @@ Entsprechend dem curvilinearen parameterraum in Gleichung \eqref{E_11_parameter}
 
 \vspace{2cm}
 \subsection{Strukturmechanik}
-Die Strukturmechanik hinter dem Element wird nach dem Prinzip der virtuellen Arbeit hergeleitet. Demnach wird auf ein System eine infinitesimal kleine Verschiebung $\delta u$ aufgebracht. Das System ist im Gleichgewicht falls die Summe aus geleisteter  interner virtueller Arbeit und  externer virtueller Arbeit für die virtuelle Verschiebung $\delta \bm{u}$ Null wird [REFERENZ Mechanics of structures S.90]. 
+Die Strukturmechanik hinter dem Element wird nach dem Prinzip der virtuellen Arbeit hergeleitet. Demnach wird auf ein System eine infinitesimal kleine Verschiebung $\delta u$ aufgebracht. Ein System das die Dirichlet Randbedingungen erfüllt ist im Gleichgewicht, falls die Summe aus geleisteter  interner virtueller Arbeit und  externer virtueller Arbeit für die virtuelle Verschiebung $\delta \bm{u}$ Null wird [REFERENZ Mechanics of structures S. 86 \& 90]. 
 
-\begin{equation}        
-    \delta W = - \delta W_{int} - \delta W_{ext} = 0    
+\begin{equation} \label{virtuelle Arbeit}    
+    \delta W = - \delta W_{int} + \delta W_{ext} = 0    
 \end{equation}      
 
 \vspace{0.5cm}
 Die interne virtuelle Arbeit ist definiert als:
 
-\begin{equation}
-    \delta W_{int} = \int_{\Omega}^{} \bm{S} : \delta \bm{E} \; d \Omega
+\begin{equation} \label{ interne Arbeit}
+    \delta W_{int} = - \int_{\Omega}^{} \bm{S} : \delta \bm{E} \; d \Omega
 \end{equation}
 
 \vspace{0.5cm}
 Die exteren virtuelle Arbeit ist definiert als:
 
-\begin{equation}
+\begin{equation} \label{externe Arbeit}
     \delta W_{ext} = \int_ {\Gamma_N}{} \bm{t} \; \delta \bm{u} \; d \Gamma \; 
     + \; \int_{\Omega}{} \rho_0 \bm{B} \; \delta \bm{u} \; d \Omega
 \end{equation}
 
 
 \vspace{0.5cm}
-wobei $\Omega$ für das Volumen und $\Gamma$ für die Oberfläche in der Ausgangskonfiguration stehen. $\delta \bm{E}$ repräsentiert die virtuellen Dehnungen und der Tensor $\bm{S}$ die energetisch zugeordneten internen Spannungen. Der Vektor $\bm{T}$ entspricht den an der Oberfläche wirkenden Kräften und Vektor $\bm{B}$ steht für die von außen wirkenden Volumenkräfte (engl. body forces). 
+wobei $\Omega$ für das Volumen und $\Gamma$ für die Oberfläche in der Ausgangskonfiguration stehen. $\delta \bm{E}$ repräsentiert die virtuellen Dehnungen und der Tensor $\bm{S}$ die energetisch zugeordneten internen Spannungen. Der Vektor $\bm{T}$ entspricht den an der Oberfläche angreifenden Kräften und Vektor $\bm{B}$ steht für die von außen wirkenden Volumenkräfte (engl. body forces). 
+
+\vspace{0.5cm}
+Für lineares Materialverhalten nach dem Hook'schen Gesetz gilt das Rheologische Stoffgesetzt (engl. constitutive law) nach dem sich Spannungen, gekoppelt über den Elastizitätsmodul, in Form von Dehnungen ausdrücken lassen. 
+
+\begin{equation}
+    \delta W_{int} = - \int_{\Omega}^{} \; \bm{E} \; \bm{C} \; \delta \bm{E} \; d\Omega
+\end{equation}
+
+\vspace{0.5cm}
+\LARGE
+Lösung der Arbeitsformulierung
+
+\vspace{0.5cm}
+\normalsize
+Bei der Formulierung in Gleichung \eqref{virtuelle Arbeit} beziehungsweise Gleichung \eqref{externe Arbeit} und \eqref{externe Arbeit} handelt es ich um die schwache Formulierung oder auch Variationsfomulierung (engl. weak form) des Equilibriums zwischen Trägheit, interner Arbeit und externer Arbeit das für bestimmte Randbedingungen erfüllt sein muss, damit ein System im Gleichgewicht ist. Da diese Art der Probleme in der Regel nicht an jedem Punkt explizit lösbar sind, bedient man sich mit der schwachen Formulierung im Bereich der Finite Elemente verschiedener Diskretisierungsmethoden die das Problem näherungsweise lösen. Dabei wird das Problem nicht an jedem Punkt explizit gelöst, aber das Gleichgewicht ist integriert für einen bestimmten Bereich erfüllt [REFERENZ IGA Skript S. 64].
+
+Ein gängiges Prinzip der Finite Elemente Methode das in gleicher Weise im Bereich der isogeometrischen Strukturanalyse angewandt werden kann, ist die Galerken-Methode mit dem Ritz'schen Verfahren der Variationsrechnung zur Lösung linearer partieller Differentialgleichungen. Für ein bekanntes Materialgesetzt müssen die wahlweise approximierten Verschiebungen die kinematischen Bedingengen so wie die Randbedingungen erfüllen. Das heißt, sie müssen kinematisch zulässig sein [REFERENZ mechanics of structures S. 452]. Das setzt voraus, dass die angenommenen Verschiebungen $\tilde{\bm{u}}$
+
+\begin{equation}
+    \bm{\epsilon} = \frac{\partial \tilde{\bm{u}}}{\bm{u}}  \; \; in \; \Omega
+\end{equation}
+
+\vspace{0.5cm}
+erfüllen muss.
+
+\vspace{0.5cm}
+Im Falle der virtuellen Arbeit muss das diskretisierte System unter Anwendung der Kettenregel differenziert werden, wobei die Gleichung \eqref{virtuelle Arbeit} für die Variation der Diskretisierungsvariablen $\delta u_r$ stets erfüllt sein muss. Die einzelnen Komponenten der Variation bilden die Anteile des Residualvektors  ${R}_r$ in Form von
+
+\begin{equation}
+    \delta W = \sum{\frac{\partial W}{\partial u_r} \delta u_r} 
+    = \sum{R_r \delta u_r}  = 0
+\end{equation}
+
+\vspace{0.5cm}
+und unter Berücksichtigung beliebiger Variationen (ungleich Null), ist diese Beziehung  gleichbedeuten zu 
+
+\begin{equation} \label{residual_vektor}
+    R_r = \frac{\partial W}{\partial u_r} = 0
+\end{equation}
+
+\vspace{0.5cm}
+für jeden Eintrag des Residualvektors.
+
+
+\vspace{0.5cm}
+Eine iterative Methode zur Lösung der Residualgleichung \eqref{residual_vektor} nach Newton-Raphson erfordert die weitere Linearisierung des Problems an Stelle der aktuellen Verschiebung $u^*$  und führt damit das Verschiebungsinkrement $\Delta u_s$ und die korrespondierende Einträge $K_rs$ der tangentialen Steifigkeitsmatrix ein.
+
+\begin{equation}
+    LIN(R_r) = 
+    \frac{\partial W}{\partial u_r} + 
+    \frac{\partial ^2 W }{\partial u_r \: \partial u_s} \Delta u_s = 
+    R_r \bigg\rvert_{u^*} + \sum_{s}{\frac{\partial R_r}{\partial u_s} \Delta u_s = 0}
+\end{equation}
+
+\vspace{0.5cm}
+Im Rückschluss können der residual Kraftvektor und die Steifigkeitsmatrix in die Bestandsteile der internen und externen Kräfte zerlegt werden [REFERENZ IGA Skript S. 72].
+
+\begin{equation}
+    R_r = \frac{\partial W}{\partial u_r} = \frac{\partial W_{int}}{\partial u_r} + \frac{\partial W_{ext}}{\partial u_r} = -(F_{r}^{int} + F_{r}^{ext} )
+\end{equation}
+
+\begin{equation}
+    K_{rs} = \frac{\partial R_s}{\partial u_s} = 
+    \frac{\partial ^2 W}{\partial u_r \, \partial u_s} = 
+    \frac{\partial ^2 W_{int}}{\partial u_r \, \partial u_s} + 
+    \frac{\partial ^2 W_{ext}}{\partial u_r \, \partial u_s} = 
+    K_{rs}^{int} + K_{rs}^{ext}
+\end{equation}
+
+\vspace{0.5cm}
+Im Rahmen dieser Arbeit wird davon ausgegangen, dass angreifenden äußere Lasten verschiebungsunabhängig sind. In Folge dessen darf externe Steifigkeitsanteil $K_{rs}^{ext}$ eliminiert werden. Das Resultat ist ein lineares Gleichungssystem in Abhängigkeit der Verschiebungsfreiheitsgrade $u_s$ 
+
+\begin{equation}
+    \sum_{s} K_{rs} \Delta u_s = F_r^{int} + F_r^{ext}
+\end{equation}
+
+
+
+% \vspace{0.5cm}
+% % TODO:: das ist schon wieder Truss-Beispiel
+% Unter Annahme eines konstanten Querschnittes mit der Querschnittsfläche $A$ lässt sich durch ein Vorintegration die innere virtuelle Arbeit durch $d \Omega = dA dL$ vereinfachen. 
+
+% \begin{equation}
+%     \delta W_{int} = - \int_{L}^{} A \; \bm{S} : \delta \bm{E} \; dL
+% \end{equation}
+
+
+
+
 
 
 
