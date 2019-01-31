@@ -205,15 +205,34 @@ Die exteren virtuelle Arbeit ist definiert als:
 wobei $\Omega$ für das Volumen und $\Gamma$ für die Oberfläche in der Ausgangskonfiguration stehen. $\delta \bm{E}$ repräsentiert die virtuellen Dehnungen und der Tensor $\bm{S}$ die energetisch zugeordneten internen Spannungen. Der Vektor $\bm{T}$ entspricht den an der Oberfläche angreifenden Kräften und Vektor $\bm{B}$ steht für die von außen wirkenden Volumenkräfte (engl. body forces). 
 
 \vspace{0.5cm}
-Für lineares Materialverhalten nach dem Hook'schen Gesetz gilt das Rheologische Stoffgesetzt (engl. constitutive law) nach dem sich Spannungen, gekoppelt über den Elastizitätsmodul, in Form von Dehnungen ausdrücken lassen. 
+% TODO:: das ist schon wieder Truss-Beispiel
+Unter Annahme eines konstanten Querschnittes mit der Querschnittsfläche $A$ lässt sich durch ein Vorintegration die innere virtuelle Arbeit durch $d \Omega = dA dL$ vereinfachen. 
+
+\begin{equation}
+    \delta W_{int} = - \int_{L}^{} A \; \bm{S} : \delta \bm{E} \; dL
+\end{equation}
+
+\vspace{0.5cm}
+Für lineares Materialverhalten nach dem Hook'schen Gesetz gilt das Rheologische Stoffgesetzt (engl. constitutive law) nach dem sich Spannungen, gekoppelt über den Elastizitätsmodul, in Form von Dehnungen ausdrücken lassen. $\bm{C}$ steht an dieser Stelle für den Material-Dehnungsmodul.
+
+% TODO Theorie noch mal genauer zum constitutive Law - IGA Skript S. 62 und Anna Beam S. 55
+
+\begin{equation}
+    \bm{S} = \bm{C} : \bm{E}
+\end{equation}
+
+\vspace{0.5cm}
+Daraus folgt: 
 
 \begin{equation}
     \delta W_{int} = - \int_{\Omega}^{} \; \bm{E} \; \bm{C} \; \delta \bm{E} \; d\Omega
 \end{equation}
 
+
+
 \vspace{0.5cm}
 \LARGE
-Lösung der Arbeitsformulierung
+\subsubsection{Lösung der Arbeitsformulierung}
 
 \vspace{0.5cm}
 \normalsize
@@ -281,13 +300,8 @@ Im Rahmen dieser Arbeit wird davon ausgegangen, dass angreifenden äußere Laste
 
 
 
-% \vspace{0.5cm}
-% % TODO:: das ist schon wieder Truss-Beispiel
-% Unter Annahme eines konstanten Querschnittes mit der Querschnittsfläche $A$ lässt sich durch ein Vorintegration die innere virtuelle Arbeit durch $d \Omega = dA dL$ vereinfachen. 
 
-% \begin{equation}
-%     \delta W_{int} = - \int_{L}^{} A \; \bm{S} : \delta \bm{E} \; dL
-% \end{equation}
+
 
 
 
@@ -315,7 +329,7 @@ Hier Bild von kurven 1.-, 2.-, und 3. Grades
 \normalsize
 % Kontrollpunkte
 \subsection{Kontrollpunkte}
-Die Kontrollpunkte einer B-Spline-Kurve sind maßgeblich für deren Geometrie im Raum verantwortlich. Formell bilden sie eine Liste aus Punktkoordinaten im Raum \\ $\bm{P}_i(x_i, y_i, z_i, w_i)$, mit zugewiesener $x, y, z$ Koordinate, sowie im Falle von NURBS einem individuellen NURBS-Gewicht $w_i$. Zur Erstellung einer B-Spline-Kurve muss die vorhandene Anzahl an Kontrollpunkten mindestens $p+1$ betragen, wobei p für den polynomialen Grad der Kurve steht. Der Grad einer B-Spline Kurve ist also direkt abhängig von der, auf ihr definierten Anzahl an Kontrollpunkten pro Element. Der intuitiveste Weg die Form einer B-Spline Kurve zu verändern ist durch Verschieben einzelner Kontrollpunkte. Das bedeutet allerdings nicht, dass die Punkte auch auf der Kurve liegen müssen. Abgesehen vom ersten und letzten Punkt einer jeden Kurve werden im Normalfall alle verbleibenden Kontrollpunkte durch den Kurvenverlauf lediglich (unterschiedlich stark) approximiert. Wie stark einzelne Punkte dabei angenähert werden ist wiederum sowohl von dem polynomialen Grad als auch von den, den Punkten zugewiesenen B-Spline Gewichten abhängig.
+Die Kontrollpunkte einer B-Spline-Kurve sind maßgeblich für deren Geometrie im Raum verantwortlich. Formell bilden sie eine Liste aus Punktkoordinaten im Raum \\ $\bm{P}_i(x_i, y_i, z_i, w_i)$, mit zugewiesener $x, y, z$ Koordinate, sowie im Falle von NURBS einem individuellen NURBS-Gewicht $w_i$. Zur Erstellung einer B-Spline-Kurve muss die vorhandene Anzahl an Kontrollpunkten mindestens $p+1$ betragen, wobei p für den polynomialen Grad der Kurve steht. Der Grad einer B-Spline Kurve ist also direkt abhängig von der, auf ihr definierten Anzahl an Kontrollpunkten pro Element. Der intuitiveste Weg die Form einer B-Spline Kurve zu verändern ist durch Verschieben einzelner Kontrollpunkte. Das bedeutet allerdings nicht, dass die Punkte auch auf der Kurve liegen müssen. Abgesehen vom ersten und letzten Punkt einer jeden Kurve werden im Normalfall alle verbleibenden Kontrollpunkte durch den Kurvenverlauf lediglich (unterschiedlich stark) approximiert. Wie stark einzelne Punkte dabei angenähert werden ist wiederum sowohl von dem polynomialen Grad als auch von den, den Punkten zugewiesenen NURBS Gewichten abhängig.
 
 % Knoten knots
 \subsection{Knoten (engl. knots)}
@@ -330,25 +344,28 @@ Knoten sind als Koordinaten im parametischen Raum definiert und unterteilen dies
 \label{subsec:knot vector}
 Jeder B-Spline Kurve ist zwingend eine Liste zugeordnet, die deren entsprechenden Knoten enthält. Diese Liste, häufig auch als Knotenvektor (engl. knot vector) bezeichnet, enthält die nötigen Information, wie die Knoten über den Parameterraum eines Elementes verteilt sind. Für den Sonderfall, dass alle Knoten gleichmäßig verteilt sind, wird der Knotenvektor als uniform bezeichnet.  Die Anzahl der Knoten im Knotenvektor ist abhängig von der Anzahl an Kontrollpunkten so wie von dem definierten Kurvengrad. Diese Bedingung ist in beide Richtungen gültig. Verändert man die Anzahl der Knoten einer Kurve, müssen demnach ebenfalls die Kontrollpunkte angepasst werden. Eine initiierende Veränderung des Kurvengrades ist ebenfalls möglich, aber keine gängige Praxis. Wichtig ist außerdem, dass die Einträge des Knotenvektors immer in aufsteigender Reihenfolge sortiert sind. 
 
+\vspace{0.5cm}
 Das Beispiel eines offenen Knotenvektors dritten Grades mit 7 Kontrollpunkten sieht wie folgt aus:
 \begin{equation*}
-    \Xi = [0.0, 0.0, 0.0, 1.0, 2.0, 3.0, 4.0, 4.0, 4.0]
+    \Xi = [0.0, 0.0, 0.0, 0.0, 1.0, 2.0, 3.0, 4.0, 4.0, 4.0, 4.0]
 \end{equation*}
+
+\vspace{0.5cm}
 Ein Normierter Knotenvektor ist im Parameterraum zwischen $0.0$ und $1.0$ definiert. 
 \begin{equation*}
-    \hat{\Xi} = [0.0, 0.0, 0.0, 0.25, 0.5, 0.75, 1.0, 1.0, 1.0]
+    \hat{\Xi} =  [0.0, 0.0, 0.0, 0.0, 0.25, 0.5, 0.75, 1.0, 1.0, 1.0, 1.0]
 \end{equation*}
 
 
 % Knot span | Knotenintervall
 \subsection{Knotenintervall (engl. knot span)}
 \label{subsec: Knotenintervall}
-Wie im Abschnitt \ref{subsec: Knoten} beschrieben, werden B-Splines im Parameterraum definiert, wobei dieser Raum wiederum durch die Knoten in Intervalle unterteilt ist. Sei $\bm{U}$ der Knotenvektor und $u_i \leq u_{i+1}, \; i = 0,...,n-1$  dessen Einträge, sogenannte Knoten. Dem entsprechend ist das $i-te$ Knotenintervall, der Raum zwischen zwei Knoten im Parameterraum, als halb-offenes Interval $[u_0, u_{i+1}]$ definiert. An der Stelle mehrfacher Knoten kann ein Knotenintervall die Länge Null annehmen. Knotenintervalle mit Länge größer Null im Parameterraum sind gleichbedeutend mit NURBS-Elmenten. Für den speziellen Fall dass der Knotenvektor keine inneren Knoten enthält und damit aus nur einem NURBS-Element besteht, entsprechen NURBS den nicht-rationalen Bézier Kurven. 
+Wie im Abschnitt \ref{subsec: Knoten} beschrieben, werden B-Splines im Parameterraum definiert, wobei dieser Raum wiederum durch die Knoten in Intervalle unterteilt ist. Sei $\bm{U}$ der Knotenvektor und $u_i \leq u_{i+1}, \; i = 0,...,n-1$  dessen Einträge, sogenannte Knoten. Dem entsprechend ist das $i-te$ Knotenintervall, der Raum zwischen zwei Knoten im Parameterraum, als halb-offenes Interval $[u_0, u_{i+1}]$ definiert. An der Stelle mehrfacher Knoten kann ein Knotenintervall die Länge Null annehmen. Knotenintervalle mit Länge größer Null im Parameterraum sind gleichbedeutend mit B-Spline-Elmenten. Für den speziellen Fall dass der Knotenvektor keine inneren Knoten enthält und damit aus nur einem Element besteht, entsprechen B-Splines den nicht-rationalen Bézier Kurven. 
 
 % Elemente
 \subsection{Elemente}
-Die Definition der Elemente im Kontext der Isogeometrischen Strukturanalyse unterscheidet sich klar von der Finiten Elemente Methode. Zwar wird auch hier ein Element durch eine bestimmte Anzahl diskreter Punkte und deren korrespondierende Basisfunktionen definiert, der unterschied ist aber dass die Basisfunktionen nicht einem einzelnen Element zu geordnet sind. Ein NURBS-Patch ist im Parameterraum über seine Domain definiert. Diese Domain wird durch Knoten in Intervalle aufgeteilt, wobei jedes Interval ein NURBS-Element definiert. Bei dieser Definition entsprechen die diskreten Punkte den NURBS-Kontrollpunkten. Es ist wichtig zu verstehen, dass sich bei dieser Art der Elementdefinition die Basisfunktionen über ein größeres Set an Elementen erstrecken. Der Vorteil gegenüber der klassischen Finite Elemente Analyse ist, dass dadurch eine höhere Kontinuität der Basisfunktionen über die Grenzen der einzelnen Elemente hinweg erreicht wird. 
-Berechnet werden die Basisfunktionen mit Hilfe der Cox-deBoor Rekursionsformel, die von den benachbarten Bereichen beeinflusst wird. Das führt dazu dass die Definition eines einzelnen Elementes nicht ohne die Betrachtung des gesamten NURBS-Patches möglich ist. In dem Kontext ist die Frage berechtigt ob die Bezeichnung Element überhaupt zutreffend ist, wenn diese gar nicht unabhängig voneinander erstellt und beliebig in einem größeren Modell assembliert werden können, wie das bei FEM der Fall ist. Trotzdem, für die Implementierung macht es keinen Unterschied. IGA Elemente können genauso wie klassische FEM Elemente behandelt werden. Zum Beispiel die Steifigkeitsmatrix wird genauso auf Elementenebene berechnet und in eine globale Steifigkeitsmatrix assembliert. Lediglich die verwendeten Basisfunktionen unterscheiden sich. 
+Die Definition der Elemente im Kontext der Isogeometrischen Strukturanalyse unterscheidet sich klar von der Finiten Elemente Methode. Zwar wird auch hier ein Element durch eine bestimmte Anzahl diskreter Punkte und deren korrespondierende Basisfunktionen definiert, der unterschied ist aber dass die Basisfunktionen nicht einem einzelnen Element zu geordnet sind. Ein B-Spline-Patch ist im Parameterraum über seine Domain definiert. Diese Domain wird durch Knoten in Intervalle aufgeteilt, wobei jedes Interval ein B-Spline-Element definiert. Bei dieser Definition entsprechen die diskreten Punkte den B-Spline-Kontrollpunkten. Es ist wichtig zu verstehen, dass sich bei dieser Art der Elementdefinition die Basisfunktionen über ein größeres Set an Elementen erstrecken. Der Vorteil gegenüber der klassischen Finite Elemente Analyse ist, dass dadurch eine höhere Kontinuität der Basisfunktionen über die Grenzen der einzelnen Elemente hinweg erreicht wird. 
+Berechnet werden die Basisfunktionen mit Hilfe der Cox-deBoor Rekursionsformel, die von den benachbarten Bereichen beeinflusst wird. Das führt dazu dass die Definition eines einzelnen Elementes nicht ohne die Betrachtung des gesamten B-Spline-Patches möglich ist. In dem Kontext ist die Frage berechtigt ob die Bezeichnung Element überhaupt zutreffend ist, wenn diese gar nicht unabhängig voneinander erstellt und beliebig in einem größeren Modell assembliert werden können, wie das bei FEM der Fall ist. Trotzdem, für die Implementierung macht es keinen Unterschied. IGA Elemente können genauso wie klassische FEM Elemente behandelt werden. Zum Beispiel die Steifigkeitsmatrix wird genauso auf Elementenebene berechnet und in eine globale Steifigkeitsmatrix assembliert. Lediglich die verwendeten Basisfunktionen unterscheiden sich. 
 
 % Mehrfachknoten 
 \subsection{Mehrfachknoten (engl. multiplicity)}
@@ -356,7 +373,7 @@ Ein Knoten kann innerhalb des Knotenvektors einer B-Spline Kurve mehrfach auftau
 
 % Open Knot Vector
 \subsection{Offene Knotenvektoren (engl. open knot vector)}
-Für den Fall dass ein Knotenvektor an Stelle des ersten und letzten Knoten eine multiplizität von $k = p+1$ hat, spricht man von einem offenen Knotenvektor (häufig auch eingespannter oder nicht-periodischer Knotenvektor genannt). B-Splines die dieses Kriterium erfüllen interpolieren mit ihrem Kurvenverlauf die genaue Position des ersten und letzten Kontrollpunktes. Außerdem ist die Steigung der Kurve an diesen beiden Stellen eine Tangente des erzeugenden Kontrollpolygons. Das hat den Vorteil, dass man auf einfache Art und Weise lediglich durch Definition von Knoten der Kurve Randbedingungen wie Eispannungen und Anfangssteigung vorgeben kann.
+Für den Fall dass ein Knotenvektor an Stelle des ersten und letzten Knoten eine multiplizität von $k = p+1$ hat, spricht man von einem offenen Knotenvektor (häufig auch eingespannter oder nicht-periodischer Knotenvektor genannt). B-Splines die dieses Kriterium erfüllen interpolieren mit ihrem Kurvenverlauf die genaue Position des ersten und letzten Kontrollpunktes. Außerdem ist die Steigung der Kurve an diesen beiden Stellen eine Tangente des erzeugenden Kontrollpolygons. Das hat den Vorteil, dass man auf einfache Art und Weise lediglich durch Definition von Knoten der Kurve, Randbedingungen wie Eispannungen und Anfangssteigung vorgeben kann.
 
 % Shape Functions
 \subsection{Basisfunktionen (engl. shape functions)}
@@ -366,7 +383,7 @@ Eine weitere zwingend notwendige Eigenschaft der Basisfunktionen ist ihre Einhei
 
 % Local Support
 \subsection{lokaler Support}
-Lokaler Support im NURBS Terminus bedeutet, dass nicht zwingend jeder Kontrollpunkt einen Einfluss auf die Geometrie der gesamten Kurve haben muss. Die Beziehung $p+1$ gibt an wie viele Kontrollpunkte jeweils von einem NURBS-Element beeinflusst werden. Das $n-te$ Element nimmt jeweils Einfluss auf die Kontrollpunkte $[\bm{P}^{n},...,\bm{P}^{n+p}]$. Als Sonderfall kann die Kombination eines hohen polynomialen Grades $p$ mit einer geringen Anzahl an Kontrollpunkten $k$ dazu führen dass jeder Kontrollpunkt Einfluss auf die gesamte Kurve nimmt $p = m-1$. In dem Fall entspricht der B-Spline einer Bézier-Kurve.
+Lokaler Support im IGA Terminus bedeutet, dass nicht zwingend jeder Kontrollpunkt einen Einfluss auf die Geometrie der gesamten Kurve haben muss. Die Beziehung $p+1$ gibt an wie viele Kontrollpunkte jeweils von einem B-Spline-Element beeinflusst werden. Das $n-te$ Element nimmt jeweils Einfluss auf die Kontrollpunkte $[\bm{P}^{n},...,\bm{P}^{n+p}]$. Als Sonderfall kann die Kombination eines hohen polynomialen Grades $p$ mit einer geringen Anzahl an Kontrollpunkten $k$ dazu führen dass jeder Kontrollpunkt Einfluss auf die gesamte Kurve nimmt $p = m-1$. In dem Fall entspricht der B-Spline einer Bézier-Kurve.
 
 
 % NURBS Gewichte 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.3)  27 JAN 2019 19:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.3)  30 JAN 2019 10:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -354,26 +354,26 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 ] [2] [3] [4] [5]
-Overfull \hbox (0.66512pt too wide) in paragraph at lines 251--252
+Overfull \hbox (0.66512pt too wide) in paragraph at lines 270--271
 []\OT1/cmr/m/n/12 Eine ite-ra-ti-ve Me-tho-de zur L[]osung der Re-si-dual-glei-chung [] nach Newton-Raphson
  []
 
-[6]
+[6] [7]
 chapter 3.
 [1
 
 
 ] [2] [3] [4] [5] (c:/_Masterarbeit/MA_Text/Kaitel.ElementHerleitung/herleitung_truss.aux) ) 
 Here is how much of TeX's memory you used:
- 6516 strings out of 492642
- 103243 string characters out of 6133163
+ 6519 strings out of 492642
+ 103286 string characters out of 6133163
  287199 words of memory out of 5000000
- 10293 multiletter control sequences out of 15000+600000
- 14180 words of font info for 51 fonts, out of 8000000 for 9000
+ 10295 multiletter control sequences out of 15000+600000
+ 14780 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  51i,8n,66p,9172b,233s stack positions out of 5000i,500n,10000p,200000b,80000s
-<d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on c:/_Masterarbeit/MA_Text/Kaitel.ElementHerleitung/herleitung_truss.pdf (12 pages, 195423 bytes).
+<d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on c:/_Masterarbeit/MA_Text/Kaitel.ElementHerleitung/herleitung_truss.pdf (13 pages, 186442 bytes).
 PDF statistics:
  103 PDF objects out of 1000 (max. 8388607)
  73 compressed objects within 1 object stream
